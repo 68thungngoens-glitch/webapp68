@@ -1,3 +1,3 @@
-<html>
-    <h1> Hello Word <h1>
-</html>
+<?php
+ echo "Hello World";
+?>
