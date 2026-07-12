@@ -10,6 +10,13 @@
         <input type="radio" name="member_category" value="3">ขนม
         <input type="radio" name="member_category" value="4">ของใช้
         <input type="radio" name="member_category" value="">อื่นๆ
+    <br>Retail/Wholesale
+    <br><input type="checkbox" name="member_R-W[]" value="retail">retail
+        <input type="checkbox" name="member_R-W[]" value="wholesale">wholesale
+    <br>Employee Name
+    <br><input type="radio" name="member_name" value="1">tee
+        <input type="radio" name="member_name" value="2">ta
+        <input type="radio" name="member_name" value="3">aec
     <br><br>
     <input type= "reset" name="reset" value= "reset">
     <input type = "submit" name="submit" value = "ok" >

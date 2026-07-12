@@ -17,4 +17,14 @@ if ($category == '1'){
 }else{
     echo "อื่นๆ";
 }
+$R_W = $_POST['member_R-W'];
+$count = count($R_W);
+    echo "<br>This is " ;
+foreach($R_W as $index => $item){
+    if ($count > 1 && $index == $count - 1){
+        echo " and " .$item; 
+    }else {
+        echo $item;
+    }
+}
 ?>
