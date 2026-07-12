@@ -27,4 +27,6 @@ foreach($R_W as $index => $item){
         echo $item;
     }
 }
+$date = $_POST['member_date'];
+    echo "<br>วันที่เพื่มสิ้นค้า : ".date("d/m/Y H:i");
 ?>

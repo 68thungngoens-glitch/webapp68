@@ -17,6 +17,7 @@
     <br><input type="radio" name="member_name" value="1">tee
         <input type="radio" name="member_name" value="2">ta
         <input type="radio" name="member_name" value="3">aec
+    <br><input type="hidden" name="member_date" value="<?php echo date('Y-m-d H:i:s');?>">
     <br><br>
     <input type= "reset" name="reset" value= "reset">
     <input type = "submit" name="submit" value = "ok" >
