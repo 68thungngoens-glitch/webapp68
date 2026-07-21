@@ -1,5 +1,5 @@
 <?php
-    include "connect.php";
+    include "connectdb.php";
     $name = $_POST["member_name"];
     $price = $_POST["member_price"];
     if($name == ""||$price == ""){
