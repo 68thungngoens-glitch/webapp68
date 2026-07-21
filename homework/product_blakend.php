@@ -2,12 +2,13 @@
     include "connectdb.php";
     $name = $_POST["member_name"];
     $price = $_POST["member_price"];
-    if($name == ""||$price == ""){
+    $amount = $_POST["member_amount"];
+    if($name == ""||$price == ""||$amount == ""){
         echo "ไปเขียนมาใหม่" ;
         header("refresh:1; url=product_input.php");
     }else{ 
-        $sql = "INSERT INTO tb_product(product_name,product_price)
-                VALUES ('$name','$price');";
+        $sql = "INSERT INTO tb_product(product_name,product_price,product_amount)
+                VALUES ('$name','$price','$amount');";
         $result = mysqli_query($link,$sql);
         if($result){
             echo "บันทึกลง db เรียบร้อย";
