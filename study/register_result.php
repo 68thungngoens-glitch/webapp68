@@ -1,9 +1,5 @@
 <?php
-$host= "localhost";
-$username= "root";
-$password= "";
-$dbname= "cs_db";
-$link= mysqli_connect($host,$username,$password,$dbname) or die("connect fail");
+include 'connect.php';
 
 $member_name = $_POST['member_name'];
 $member_email = $_POST['member_email'];

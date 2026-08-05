@@ -1,6 +1,5 @@
 <?php
 include 'connect.php';
-
 $sql = "SELECT * FROM tb_member";
 $result = mysqli_query($link,$sql);
 ?>

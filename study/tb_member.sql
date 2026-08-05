@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 15, 2026 at 04:54 AM
--- Server version: 8.4.3
+-- Generation Time: Aug 05, 2026 at 02:07 PM
+-- Server version: 12.1.2-MariaDB
 -- PHP Version: 8.3.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tb_member` (
-  `member_id` int NOT NULL,
+  `member_id` int(11) NOT NULL,
   `member_name` varchar(100) DEFAULT NULL,
   `member_email` varchar(100) DEFAULT NULL,
-  `member_phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
+  `member_phone` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -39,7 +39,8 @@ CREATE TABLE `tb_member` (
 --
 
 INSERT INTO `tb_member` (`member_id`, `member_name`, `member_email`, `member_phone`) VALUES
-(1, 'werw', 'er', 'er');
+(3, 'werw4', 'er', '0927695006'),
+(4, 'ถุงเงิน สุขภิรมย์', 'aeczy1236@gmail.com', '0927695006');
 
 --
 -- Indexes for dumped tables
@@ -59,7 +60,7 @@ ALTER TABLE `tb_member`
 -- AUTO_INCREMENT for table `tb_member`
 --
 ALTER TABLE `tb_member`
-  MODIFY `member_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
