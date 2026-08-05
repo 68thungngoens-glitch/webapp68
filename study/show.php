@@ -9,17 +9,13 @@ $result = mysqli_query($link,$sql);
         <tr>
             <td> ID </td>
             <td> NAME </td>
-            <td> E-mail </td>
-            <td> Phone </td>
         </tr>
         <?php
         while($arr = mysqli_fetch_array($result)){
         ?>
         <tr>
-            <td><?php echo $arr["member_id"];?></td>
-            <td><?php echo $arr["member_name"];?></td>
-            <td><?php echo $arr["member_email"];?></td>
-            <td><?php echo $arr["member_phone"]?></td>
+            <td><?php echo $arr['member_id'];?></td>
+            <td><?php echo "<a href = 'detail.php?id=".$arr['member_id']."'>".$arr['member_name']."</a>";?></td>
         </tr>
         <?php
         }
