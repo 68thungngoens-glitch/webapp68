@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 21, 2026 at 02:49 PM
--- Server version: 8.4.3
+-- Generation Time: Aug 06, 2026 at 10:45 AM
+-- Server version: 12.1.2-MariaDB
 -- PHP Version: 8.3.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tb_product` (
-  `product_id` int NOT NULL,
+  `product_id` int(11) NOT NULL,
   `product_name` varchar(999) NOT NULL,
-  `product_price` int NOT NULL,
-  `product_amount` int NOT NULL
+  `product_price` int(11) NOT NULL,
+  `product_amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -39,7 +39,8 @@ CREATE TABLE `tb_product` (
 --
 
 INSERT INTO `tb_product` (`product_id`, `product_name`, `product_price`, `product_amount`) VALUES
-(1, 'tee', 50, 6);
+(2, 'tee', 50, 6),
+(3, 'taa', 500, 1);
 
 --
 -- Indexes for dumped tables
@@ -59,7 +60,7 @@ ALTER TABLE `tb_product`
 -- AUTO_INCREMENT for table `tb_product`
 --
 ALTER TABLE `tb_product`
-  MODIFY `product_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
