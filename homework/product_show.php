@@ -22,6 +22,8 @@ while($arr = mysqli_fetch_array($result)){
 <tr>
     <td><?php echo $arr["product_id"]; ?></td>
     <td><?php echo "<a href= 'detail_product.php?id=".$arr['product_id']."'>".$arr["product_name"]."</a>"; ?></td>
+    <td><a href="edit_product.php?id=<?php echo $arr['product_id'];?>">Edit</a></td>
+    <td><a></a></td>
 </tr>
 <?php
 }
