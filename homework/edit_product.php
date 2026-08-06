@@ -3,7 +3,7 @@ include 'connectdb.php';
 
 $x= $_GET['id'];
 
-$sql= "SELECT * FROM tb_product WHERE product_id= '$x';";
+$sql= "SELECT *,product_price * product_amount AS product_total FROM tb_product WHERE product_id= '$x';";
 $result= mysqli_query($link,$sql);
 
 $y= mysqli_num_rows($result);
@@ -18,6 +18,7 @@ Product old : <br>
     Name : <?php echo $arr['product_name'];?>
     : Price : <?php echo $arr['product_price'];?>
     : Amount : <?php echo $arr['product_amount'];?>
+    : Total : <?php echo $arr['product_total'];?>
 <br>Product new : <br>
 Name  : <input type= "text" name= 'product_name' value= "">
 Price : <input type= "number" name= 'product_price' value=""> 
