@@ -1,5 +1,5 @@
 <?php
-include 'connectdb.php';
+include "connectdb.php";
 
 $x = $_POST['id'];
 $name= $_POST['product_name'];

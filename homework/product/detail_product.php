@@ -1,5 +1,5 @@
 <?php
-include 'connectdb.php';
+include "connectdb.php";
 
 $x= $_GET['id'];
 $sql= "SELECT* , product_price * product_amount AS product_total
