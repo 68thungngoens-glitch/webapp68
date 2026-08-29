@@ -14,8 +14,9 @@
 <br>    Director : <input type="text" name="director_movies" value="">
 <br>    Release year : <input type="date" name="date_movies" value="">
 <br>    Time : <input type="number" name="hour_time_movies"value="00" min="0" max="23">ชั่วโมง<input type="number" name="minute_time_movies" value="00" min="0" max="59">นาที
-<br>    Score : <input type="number" name="score_movies" value ="0" min="1" max="10">คะแนน
-<br>    <input type="submit" formaction ="movies.php" name="retrun_movies" value="Retrun">
+<br>    Score : <input type="number" name="score_movies" value ="0" min="0" max="10">คะแนน
+<br>    <input type="submit" formaction ="movies.php" name="retrun_movies" value="Retrun">   
         <input type="submit" name= "add_movies" value="Add">
     </form>
+    
 </html>
