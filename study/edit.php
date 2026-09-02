@@ -1,7 +1,18 @@
 <?php
+session_start();
+$x = $_GET['id'];
+if(!isset($_SESSION['member_id'])){
+    echo "MEMBER ONLIY"
+    exit();
+}else{
+    if($_SESSION[meber_id] != $x){
+        echo "Not for you";
+        exit();
+    }
+}
 include 'connect.php';
 
-$x = $_GET['id'];
+
 
 $sql = "SELECT * FROM tb_member WHERE member_id = '$x';";
 $result = mysqli_query($link,$sql);
