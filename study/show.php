@@ -1,4 +1,12 @@
 <?php
+session_start();
+if(!isset($_SESSION['member_id'])){
+    echo "you are not login";
+}else{
+    echo "Welcome ".$_SESSION['member_name'];
+    echo "<a href='log_out.php'> Log Out </a>";
+}
+
 include 'connect.php';
 $sql = "SELECT * FROM tb_member";
 $result = mysqli_query($link,$sql);
