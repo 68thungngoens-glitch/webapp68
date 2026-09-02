@@ -1,4 +1,10 @@
 <?php 
+        session_start();
+    if(!isset($_SESSION['name_id'])){
+        echo "you not login.";
+        header('refresh:1;url=Login.php');
+        exit();
+    }else{
     include 'connectdb_Flim.php';
     $id = $_GET['id'];
 
@@ -18,6 +24,7 @@
     $result = mysqli_query($link,$sql);
 
     $data = mysqli_fetch_assoc($result);
+    echo $_SESSION['name']."Editing : <br>"; }
 ?>
 <html>
         Movies : 

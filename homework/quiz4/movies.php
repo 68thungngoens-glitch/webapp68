@@ -1,4 +1,6 @@
 <?php
+    include 'check_login.php';
+    echo $_SESSION['name']." : seeing <br>";
     include "connectdb_Flim.php";
 
     $sql = "SELECT m.movie_id,
@@ -40,4 +42,5 @@
  
     <br>
     <a href = add_movies.php>Add : </a>
+<br> <a href = logout.php>Logout : </a>
 </html>

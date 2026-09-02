@@ -1,4 +1,11 @@
 <?php
+    session_start();
+    if(!isset($_SESSION['name_id'])){
+        echo "you not login.";
+        header('refresh:1;url=Login.php');
+        exit();
+    }else{
+    echo $_SESSION['name']."Edit<br>";    
     include 'connectdb_Flim.php';
 
     $id = $_POST['id'];
@@ -34,6 +41,8 @@
 
     echo "Edit Success";
     header('refresh:1;url=movies.php');
+    }
+    
 
 
 ?>

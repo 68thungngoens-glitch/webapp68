@@ -1,4 +1,6 @@
 <?php
+    include 'check_login.php';
+    echo $_SESSION['name']." : seeing <br>";
     include 'connectdb_Flim.php';
 
     $x = $_GET['id'];
@@ -20,8 +22,8 @@
     $data = mysqli_fetch_array($result);
 
     echo "ID : ".$data['movie_id'];
-    echo "<br>MOVIE : ".$data['movie_name'];
-    echo "<br>TYPE : ".$data['movie_type'];
+    echo "<br>Movie : ".$data['movie_name'];
+    echo "<br>Type : ".$data['movie_type'];
     echo "<br>Director : ".$data['movie_director'];
     echo "<br>Release Year : ".$data['movie_year'];
     echo "<br>Time : ".$data['movie_time']." : H";

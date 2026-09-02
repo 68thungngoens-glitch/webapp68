@@ -1,3 +1,7 @@
+<?php 
+    include "check_login.php";
+    echo $_SESSION['name']." : Editing <br>";
+?>
 <html>
     <form name="add_movies" action="add_result_movies.php" method="POST">
      Movies :
@@ -19,6 +23,5 @@
 <br>    <input type="submit" formaction ="movies.php" name="retrun_movies" value="Retrun"> 
         <input type='reset' name='reset_movies' value='Reset'>
         <input type="submit" name= "add_movies" value="Add">
-    </form>
-    
+    </form>  
 </html>
