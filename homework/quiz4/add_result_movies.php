@@ -17,7 +17,7 @@
         echo "Failed to add because the name already exists.";
         header("refresh:1;url=add_movies.php");
     }else{
-    $sql = "INSERT INTO tb_movies(movie_name,movie_director,movie_year,movie_time,moive_score)
+    $sql = "INSERT INTO tb_movies(movie_name,movie_director,movie_year,movie_time,movie_score)
             VALUES ('$name','$director','$release_year','$time','$score');";
 
     mysqli_query($link,$sql);

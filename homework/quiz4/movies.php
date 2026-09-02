@@ -20,11 +20,6 @@
         <tr>
             <td>ID</td>
             <td>Movies_name</td>
-            <td>Movies_type</td>
-            <td>Movie_director</td>
-            <td>Movie_year</td>
-            <td>Movie_time</td>
-            <td>Movies_score</td>
             <td>Edit</td>
             <td>Delete</td>
         </tr>
@@ -33,15 +28,7 @@
         ?>
         <tr>
             <td><?php echo $data['movie_id'];?></td>
-            <td><?php echo $data['movie_name'];?></td>
-            <td><?php echo $data['movie_type'];?></td>
-            <td><?php echo $data['movie_director'];?></td>
-            <td><?php echo $data['movie_year'];?></td>
-            <td><?php echo $data['movie_time'];
-                        echo " : H";
-                        ?>
-            </td>
-            <td><?php echo $data['movie_score'];?></td>
+            <td><a href="detail.php?id=<?php echo $data['movie_id'];?>"><?php echo $data['movie_name'];?></a></td>
             <td><a href="edit_movies.php?id=<?php echo $data['movie_id'];?>">Edit</a></td>
             <td><a href="delete_movies.php?id=<?php echo $data['movie_id'];?>">Delete</a></td>
         
