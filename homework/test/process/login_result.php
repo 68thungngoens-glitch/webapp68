@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include '../config/connectdb_test.php';
     //เช็ค username และ password
     if(empty($_POST['username'])){
@@ -25,6 +26,9 @@
         //เช็ค password
         if($password == $data['member_password']){
             echo "Login successful.";
+            //เพิ่ม SESSION 
+            $_SESSION['member_id'] = $data['member_id'];
+            $_SESSION['member_name']=$data['member_name'];
             header("refresh:1;url=../pages/list.php");
 
         }else{
