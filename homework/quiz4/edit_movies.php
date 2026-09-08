@@ -5,6 +5,7 @@
         header('refresh:1;url=Login.php');
         exit();
     }else{
+        echo $_SESSION['name']."Editing : <br>"; }
     include 'connectdb_Flim.php';
     $id = $_GET['id'];
 
@@ -24,7 +25,6 @@
     $result = mysqli_query($link,$sql);
 
     $data = mysqli_fetch_assoc($result);
-    echo $_SESSION['name']."Editing : <br>"; }
 ?>
 <html>
         Movies : 

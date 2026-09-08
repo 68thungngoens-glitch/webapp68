@@ -1,4 +1,5 @@
 <?php
+    include 'check_login.php';
     include 'connectdb_Flim.php';
 
     $name = $_POST['name_movies'];

@@ -4,8 +4,7 @@
         echo "you not login.";
         header('refresh:1;url=Login.php');
         exit();
-    }else{
-    echo $_SESSION['name']."Edit<br>";    
+    }else{   
     include 'connectdb_Flim.php';
 
     $id = $_POST['id'];

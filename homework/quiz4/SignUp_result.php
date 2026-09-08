@@ -14,6 +14,8 @@
                 VALUES ('$name','$password');";
         $result = mysqli_query($link,$sql);
          if($result){
+
+        
         echo "Saved successfully.";
         header("refresh:1;url=Login.php");
              }else{
