@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    if(isset($_SESSION['member_id'])){
+        echo "you logined.";
+        header("refresh:1;url=pages/list.php");
+        exit();
+    }
+?>
 <html>
     LOGIN :  
     <form action="process/login_result.php" method= "POST">

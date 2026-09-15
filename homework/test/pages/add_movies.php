@@ -1,5 +1,5 @@
 <html>
-    ADD_MOVIES : <form action="add_result_movies.php" methon='POST'>
+    ADD_MOVIES : <form action="../process/add_result_movies.php" method='POST'>
 <br>Name : <input type="text" name="name_movies">
 <br>Type : 
 <input type="checkbox" name="type[]" value="1">action
