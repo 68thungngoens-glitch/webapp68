@@ -6,7 +6,7 @@
 <input type="checkbox" name="type[]" value="2">comedy
 <input type="checkbox" name="type[]" value="3">horror
 <br>Director : <input type = "text" name="director_movies">
-<br>Release Year : <input type="date" name="dete_movies">
+<br>Release Year : <input type="date" name="date_movies">
 <br>Time : <input type='number' name="time"> Minute.
 <br>Point : <input type="number" name="point" max="10"> MAX 10 .
 <br><input type='reset' value='Reset'>
