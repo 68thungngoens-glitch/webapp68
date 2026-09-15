@@ -18,7 +18,7 @@
 
 
     
-    $sql = "SELECT * FROM member WHERE member_name = '$username';";
+    $sql = "SELECT * FROM tb_member WHERE member_name = '$username';";
     $result= mysqli_query($link,$sql);
     //เช็ค ชื่อ
     if(mysqli_num_rows($result)>0){
