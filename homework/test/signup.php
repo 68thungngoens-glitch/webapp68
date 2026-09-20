@@ -1,11 +1,3 @@
-<?php
-    session_start();
-    if(empty($_SESSION['member_id'])){
-        echo "you doing loin.";
-        header("refresh:1;url=pages/list.php");
-        exit();
-    }
-?>
 <html>
     SIGN_UP : <br>
     <form action="process/signup_result.php" method="POST">

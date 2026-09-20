@@ -1,5 +1,9 @@
+<?php
+    session_start();
+    $_SESSION['action'] = "Add"; 
+?>
 <html>
-    ADD_MOVIES : <form action="../process/add_result_movies.php" method='POST'>
+    ADD_MOVIES : <?php echo $_SESSION["member_name"]." : ".$_SESSION['action'];?><form action="../process/add_result_movies.php" method='POST'>
 <br>Name : <input type="text" name="name_movies">
 <br>Type : 
 <input type="checkbox" name="type[]" value="1">action

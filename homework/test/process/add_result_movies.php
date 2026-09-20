@@ -10,7 +10,15 @@
     $time = $_POST['time'];
     $point = $_POST['point'];
 
-    $sql = "INSERT INTO tb_movies (movies_name,movies_director,movies_release_year,movies_time,movies_point)
+    $sql = "SELECT * FROM tb_movies WHERE movies_name = '$name';";
+    $result = mysqli_query($link,$sql);
+
+    if(mysqli_fetch_array($result)>0){
+        echo "name movies you can don't insert";
+        header("refresh:1;url=../pages/show_movies.php");
+        exit();
+    }else{
+         $sql = "INSERT INTO tb_movies (movies_name,movies_director,movies_release_year,movies_time,movies_point)
             VALUES ('$name','$dir','$reyear','$time','$point');";
     
     $result = mysqli_query($link,$sql);
@@ -24,9 +32,8 @@
                     VALUES ('$movies_id','$type_id');";
             mysqli_query($link,$sql);
         }
-        $member_id = $_SESSION['member_id'];
-        $sql = "INSERT INTO tb_member_action(member_id,movies_id,action_id,action_where)
-            VALUES ('$member_id','$movies_id','$add','movies');";
-            mysqli_query($link,$sql);
+        $_SESSION['action'] = "Add"; 
+        header("refresh:1;url=../pages/show_movies.php");
+    }
     }
 ?>
