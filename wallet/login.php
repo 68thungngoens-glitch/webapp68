@@ -1,5 +1,5 @@
 <html>
-    <form action='login_result.php' method = 'POST'>
+    <form action='login_result.php' method='POST'>
         LOGIN_MY_WALLET
     <br>Username : <input type='text' name='username'>
     <br>Password : <input type='password' name='password'>
