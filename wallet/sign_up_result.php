@@ -23,7 +23,9 @@
             VALUES ('$username','$password','$name');";
         $result = mysqli_query($link,$sql);
         echo "Save complete";
+        header("refresh:1;url='login.php'");
     }else{
         echo "Don't save ";
+        header("refresh:1;url='sign_up.php'");
     }
 ?>
