@@ -8,10 +8,22 @@
         header("refresh:1;url='sign_up.php'");
         exit();
    }elseif(empty($name = $_POST['name'])){
-        echo "password not fail";
+        echo "name not fail";
         header("refresh:1;url='sign_up.php'");
         exit();
    }
 
-    echo $username." : ".$password;
+   include 'connectdb_wallet.php' ;
+
+        $sql = "SELECT * FROM tb_member 
+            WHERE member_username = '$username';";
+        $result = mysqli_query($link,$sql);
+    if(mysqli_num_rows($result) <= 0){
+        $sql = "INSERT INTO tb_member (member_username,member_password,member_name)
+            VALUES ('$username','$password','$name');";
+        $result = mysqli_query($link,$sql);
+        echo "Save complete";
+    }else{
+        echo "Don't save ";
+    }
 ?>
