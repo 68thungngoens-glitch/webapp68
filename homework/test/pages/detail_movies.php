@@ -4,7 +4,7 @@
     session_start();
     $id = $_GET['id'];
     $member_id = $_SESSION['member_id'];
-    $sql = "SELECT * FROM tb_movies WHERE member_id='$id' AND member_id='$member_id';";
+    $sql = "SELECT * FROM tb_movies WHERE movies_id='$id' AND member_id='$member_id';";
     $result = mysqli_query($link,$sql);
     if(mysqli_num_rows($result)>0){
     $sql = "SELECT m.movies_id,m.movies_name,
@@ -31,7 +31,8 @@
     $_SESSION['action'] = "detail";
 
     echo "<br><a href='show_movies.php'>Back : </a>";
-    echo "<br><a href='add_movies.php'>Add : </a><a href='edit_movies.php'> Edit </a>";
+    echo "<br><a href='add_movies.php'>Add : </a>";
+    echo "<br><a href='edit_movies.php?id=$id'> Edit </a>";
     echo "<br><a href='delete.php'> Delete :</a>";
     }else{
         echo "user don't doit";
