@@ -6,17 +6,17 @@
 <html>
     <table border = '1'>
         <tr>
-            <td>ID</td>
+            <td>Id</td>
             <td>Name</td>
             <td>List</td>
             <td>Time</td>
         </tr>
     </table>
-    
 </html>
 <?php   }else{?>
 <html>
-
+<br>Do you want ? :
+<a href='add_money.php'>add money : </a>
 </html>
 <?php } ?>
 <html>

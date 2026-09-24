@@ -1,3 +1,11 @@
+<?php   session_start();
+    if(isset($_SESSION['id'])){
+        echo "you loging";
+        header("refresh:1;url=show_wallet.php");
+        exit();
+    }
+?>
+
 <html>
     <form action='sign_up_result.php' method='POST'>
         SIGN_UP_MY_WALLET

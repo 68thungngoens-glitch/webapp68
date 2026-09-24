@@ -1,3 +1,10 @@
+<?php   session_start();
+    if(isset($_SESSION['id'])){
+        echo "you loging";
+        header("refresh:1;url=show_wallet.php");
+        exit();
+    }
+?>
 <?php
    if(empty($username = $_POST['username'])){
         echo "user not fail";
@@ -19,8 +26,9 @@
             WHERE member_username = '$username';";
         $result = mysqli_query($link,$sql);
     if(mysqli_num_rows($result) <= 0){
-        $sql = "INSERT INTO tb_member (member_username,member_password,member_name)
-            VALUES ('$username','$password','$name');";
+        $role = "member";
+        $sql = "INSERT INTO tb_member (member_username,member_password,member_name,role)
+            VALUES ('$username','$password','$name','$role');";
         $result = mysqli_query($link,$sql);
         echo "Save complete";
         header("refresh:1;url='login.php'");
