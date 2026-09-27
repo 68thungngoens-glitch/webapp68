@@ -13,6 +13,12 @@
         $sql = "INSERT INTO tb_member(member_name,member_password,member_fullname,member_email)
                 VALUES('$username','$password','$fullname','$email');";
         mysqli_query($link,$sql);
+
+
+        $member_id = mysqli_insert_id($link);
+        $sql = "INSERT INTO tb_wallet(member_id)
+                VALUES ('$member_id');";
+        mysqli_query($link,$sql);
         echo "Sign Up complete.";
         header("refresh:1;url='login.php'");
     }else{
