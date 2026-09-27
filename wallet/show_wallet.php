@@ -12,6 +12,15 @@
 <html>
     MY WALLET YOU : <?php echo $_SESSION['name'];?>
 <br><?php   echo "Money : ".$arr['money']." $";?>
-
+<br>List : 
+<br><table border=1>
+    <tr>
+        <td>ID</td>
+        <td>List</td>
+        <td>Money</td>
+        <td>Time</td>
+    </tr>
+</table>
 <br><a href='add_money.php'> Add Money :</a>
+<br><a href='logout.php'>Log Out :</a>
 </html>
