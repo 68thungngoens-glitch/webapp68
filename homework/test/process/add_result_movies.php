@@ -8,10 +8,7 @@
     $type = $_POST['type'];
     $dir = $_POST['director_movies'];
     $reyear = $_POST['date_movies'];
-    $time = $_POST['time'];
-
-    $hour = floor($time / 60);
-    $min = $time % 60;
+     $min = $time % 60;
     $time = sprintf("%02d:%02d:00",$hour,$min);
     $point = $_POST['point'];
 
@@ -41,3 +38,4 @@
     }
     }
 ?>
+   

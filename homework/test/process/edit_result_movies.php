@@ -24,8 +24,9 @@
          movies_director ='$dir'
          ,movies_release_year='$reyear'
          ,movies_time = '$time'
-         ,movies_point = '$point'";
-         
+         ,movies_point = '$point'
+         WHERE movies_id = '$id'";
+
         $result = mysqli_query($link,$sql);
 
         $sql = "DELETE FROM tb_movies_type";

@@ -16,7 +16,8 @@
             GROUP BY m.movie_id";
 
     $result= mysqli_query($link,$sql);
-    ?>
+    
+?>
 <html>
     <table border = "1">
         <tr>

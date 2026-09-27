@@ -26,22 +26,16 @@
             WHERE movie_id = '$id';";
 
     mysqli_query($link,$sql);
-
     $sql = "DELETE FROM tb_movies_type WHERE movies_id = '$id'";
-
+    
     mysqli_query($link,$sql);
-
     foreach($type as $type_id){
         $sql = "INSERT INTO tb_movies_type(movies_id,type_id)
                 VALUES ('$id','$type_id')";
         
         mysqli_query($link,$sql);
     }
-
     echo "Edit Success";
     header('refresh:1;url=movies.php');
     }
-    
-
-
 ?>
