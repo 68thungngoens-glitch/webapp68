@@ -1,5 +1,5 @@
 <html>
-    <form >
+    <form action='signup_result.php' method='POST'>
         SIGN UP MY WALLET :
     <br>Username : <input type='text' name='username'>
     <br>Password : <input type='password' name='password'>
