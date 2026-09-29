@@ -8,6 +8,8 @@ $sql = "SELECT w.money,
         w.member_id,
         t.transaction_id,
         t.transaction_type,
+        t.amount,
+        t.fee,
         t.total_amount,
         t.related_user_id,
         t.status,
@@ -43,8 +45,10 @@ while ($arr = mysqli_fetch_assoc($result)) {
             <tr>
                 <td>ID</td>
                 <td>Transaction</td>
-                <td>Money</td>
-                <td>To user</td>
+                <td>Amount</td>
+                <td>Fee</td>
+                <td>Total</td>
+                <td>To User</td>
                 <td>Status</td>
                 <td>Date Time</td>
             </tr>
@@ -53,6 +57,8 @@ while ($arr = mysqli_fetch_assoc($result)) {
             <tr>
                 <td><?php echo $arr['transaction_id']; ?></td>
                 <td><?php echo $arr['transaction_type']; ?></td>
+                <td><?php echo $arr['amount']; ?></td>
+                <td><?php echo $arr['fee']; ?></td>
                 <td><?php echo $arr['total_amount']; ?></td>
                 <td><a href="detail.php?id=<?php echo $arr['related_user_id']; ?>"><?php echo $arr['related_user_id']; ?></a></td>
                 <td><?php echo $arr['status']; ?></td>
@@ -63,6 +69,8 @@ while ($arr = mysqli_fetch_assoc($result)) {
 
         <br><a href="deposit_money.php">Deposit Money :</a>
         <br><a href="withdraw_money.php">Withdraw Money :</a>
+        <br><a href="list_transfer_money.php">Transfer Money :</a>
+
         <br><a href="logout.php">Log Out :</a>
   
 </html>

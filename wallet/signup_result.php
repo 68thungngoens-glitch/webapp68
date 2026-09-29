@@ -19,6 +19,9 @@
         $sql = "INSERT INTO tb_wallet(member_id)
                 VALUES ('$member_id');";
         mysqli_query($link,$sql);
+        $sql = "INSERT INTO tb_point(member_id)
+                VALUES ('$member_id');";
+        mysqli_query($link,$sql);
         echo "Sign Up complete.";
         header("refresh:1;url='login.php'");
     }else{
