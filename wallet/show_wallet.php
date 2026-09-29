@@ -21,6 +21,6 @@
         <td>Time</td>
     </tr>
 </table>
-<br><a href='add_money.php'> Add Money :</a>
+<br><a href='deposit_money.php'> Deposit Money :</a>
 <br><a href='logout.php'>Log Out :</a>
 </html>
