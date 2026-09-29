@@ -32,8 +32,9 @@ while ($arr = mysqli_fetch_assoc($result)) {
         MY WALLET YOU : <?php echo $_SESSION['name']; ?>
 
         <br>
-        Money : <?php echo $money; ?> $
-
+        Money : <?php echo $money; ?>.$
+        <br>
+        Point : 
         <br>
         List :
 
@@ -46,7 +47,6 @@ while ($arr = mysqli_fetch_assoc($result)) {
                 <td>To user</td>
                 <td>Status</td>
                 <td>Date Time</td>
-                <td>Point</td>
             </tr>
 
             <?php foreach ($transactions as $arr) { ?>
