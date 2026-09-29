@@ -70,7 +70,7 @@ try{
     $sql = "INSERT INTO tb_transactions
             (member_id, transaction_type, amount, fee, total_amount, related_user_id, status)
             VALUES
-            ('$id', '$type', '$money', '$fee', '$total', '$id', '$status')";
+            ('$id', '$type', '$money', '$fee', '$money_in', '$id', '$status')";
 
     if(!$link->query($sql)){
         throw new Exception("Insert transaction failed");
@@ -80,6 +80,7 @@ try{
 
     echo "Deposit complete";
     echo "<br>Save transaction complete";
+    header("refresh:2;url='show_wallet.php'");
 
 
 }catch(Exception $e){
@@ -88,6 +89,7 @@ try{
 
     echo "Deposit fail";
     echo "<br>Error : ".$e->getMessage();
+    header("refresh:1;url='show_wallet.php'");
 }
 
 ?>
