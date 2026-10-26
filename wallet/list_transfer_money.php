@@ -9,6 +9,7 @@
     $result = mysqli_query($link,$sql);
 ?>
 <html>
+   Transfer To : <br>
     <table border='1'>
         <tr><td>ID</td>
             <td>Name</td>

@@ -6,7 +6,45 @@ $id_in = $_POST['id_in'];
 $id_out = $_SESSION['id'];       
 $money = $_POST['money'];        
 $fee = $money * (1 / 100);       
-$total = $money + $fee;          
+$total = $money + $fee; 
+
+date_default_timezone_set('Asia/Bangkok');
+
+$id_in = $_POST['id_in'];
+$id_out = $_SESSION['id'];
+$money = (float) $_POST['money'];
+
+$fee = $money * 0.01;
+$total = $money + $fee;
+
+$time = new DateTimeImmutable('now',new DateTimeZone('Asia/Bangkok'));
+
+function calculateTransferPoints(
+    float $amount,
+    DateTimeImmutable $time): int {
+    if ($amount < 1000) {
+        return 0;
+    }
+
+    $time = $time->setTimezone(
+        new DateTimeZone('Asia/Bangkok')
+    );
+
+    $isWednesday = $time->format('N') === '3';
+    $hourMinute = $time->format('H:i');
+
+    $isSpecialHour =
+        $hourMinute >= '19:00' &&
+        $hourMinute < '20:00';
+
+    $rate = ($isWednesday || $isSpecialHour)
+        ? 0.02
+        : 0.01;
+
+    return (int) floor($amount * $rate);
+}
+
+$point = calculateTransferPoints($money, $time);
 
 $link->begin_transaction();
 
@@ -46,9 +84,9 @@ try {
     $type = "transfer_out";
 
     $sql = "INSERT INTO tb_transactions
-            (member_id, transaction_type, amount, fee, total_amount, related_user_id, status)
+            (member_id, transaction_type, amount, fee, discount, total_amount, related_user_id, status)
             VALUES
-            ('$id_out', '$type', '$money', '$fee', '$total', '$id_in', '$status')";
+            ('$id_out', '$type', '$money', '$fee','$point', '$total', '$id_in', '$status')";
 
     if (!$link->query($sql)) {
         throw new Exception("Insert sender transaction failed");
@@ -57,9 +95,9 @@ try {
     $type = "transfer_in";
 
     $sql = "INSERT INTO tb_transactions
-            (member_id, transaction_type, amount, fee, total_amount, related_user_id, status)
+            (member_id, transaction_type, amount, fee,discount, total_amount, related_user_id, status)
             VALUES
-            ('$id_in', '$type', '$money', '0', '$money', '$id_out', '$status')";
+            ('$id_in', '$type', '$money', '0','0', '$money', '$id_out', '$status')";
 
     if (!$link->query($sql)) {
         throw new Exception("Insert receiver transaction failed");
@@ -72,7 +110,7 @@ try {
     echo "Transfer complete";
     echo "<br>Save transaction complete";
 
-    header("refresh:2;url='show_wallet.php'");
+   // header("refresh:2;url='show_wallet.php'");
 
 } catch (Exception $e) {
 
@@ -82,6 +120,6 @@ try {
     echo "Transfer fail";
     echo "<br>Error : " . $e->getMessage();
 
-    header("refresh:1;url='show_wallet.php'");
+   // header("refresh:1;url='show_wallet.php'");
 }
 ?>

@@ -10,6 +10,7 @@ $sql = "SELECT w.money,
         t.transaction_type,
         t.amount,
         t.fee,
+        t.discount,
         t.total_amount,
         t.related_user_id,
         t.status,
@@ -38,8 +39,11 @@ while ($arr = mysqli_fetch_assoc($result)) {
         <br>
         Point : 
         <br>
+         <br><a href="deposit_money.php">Deposit Money :</a>
+        <br><a href="withdraw_money.php">Withdraw Money :</a>
+        <br><a href="list_transfer_money.php">Transfer Money :</a>
+<br>
         List :
-
         <br>
         <table border="1">
             <tr>
@@ -47,6 +51,7 @@ while ($arr = mysqli_fetch_assoc($result)) {
                 <td>Transaction</td>
                 <td>Amount</td>
                 <td>Fee</td>
+                <td>Point</td>
                 <td>Total</td>
                 <td>To User</td>
                 <td>Status</td>
@@ -59,6 +64,7 @@ while ($arr = mysqli_fetch_assoc($result)) {
                 <td><?php echo $arr['transaction_type']; ?></td>
                 <td><?php echo $arr['amount']; ?></td>
                 <td><?php echo $arr['fee']; ?></td>
+                <td><?php echo $arr['discount'];?></td>
                 <td><?php echo $arr['total_amount']; ?></td>
                 <td><a href="detail.php?id=<?php echo $arr['related_user_id']; ?>"><?php echo $arr['related_user_id']; ?></a></td>
                 <td><?php echo $arr['status']; ?></td>
@@ -66,11 +72,6 @@ while ($arr = mysqli_fetch_assoc($result)) {
             </tr>
             <?php } ?>
         </table>
-
-        <br><a href="deposit_money.php">Deposit Money :</a>
-        <br><a href="withdraw_money.php">Withdraw Money :</a>
-        <br><a href="list_transfer_money.php">Transfer Money :</a>
-
         <br><a href="logout.php">Log Out :</a>
   
 </html>
