@@ -42,7 +42,7 @@ while ($arr = mysqli_fetch_assoc($result)) {
         <br>
         Money : <?php echo $money; ?>.$
         <br>
-        Point : <?php echo $point; ?>.POINTS
+        Point : <?php echo $point; ?>.Point
         <br>
          <br><a href="deposit_money.php?point=<?php echo $point ;?>">Deposit Money :</a>
         <br><a href="withdraw_money.php">Withdraw Money :</a>
@@ -56,7 +56,7 @@ while ($arr = mysqli_fetch_assoc($result)) {
                 <td>Transaction</td>
                 <td>Amount</td>
                 <td>Fee</td>
-                <td>Point</td>
+                <td>Discount</td>
                 <td>Total</td>
                 <td>To User</td>
                 <td>Status</td>

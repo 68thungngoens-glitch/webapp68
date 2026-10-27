@@ -127,6 +127,13 @@ try {
         throw new Exception("Insert receiver points update failed");
     }
 
+    $sql = "UPDATE tb_point_lots
+            SET remaining_points = remaining_points + '$point'
+            WHERE member_id = '$id_out';";
+    if (!$link->query($sql)) {
+        throw new Exception("Insert receiver points_lots update failed");
+    }
+
     $link->commit();
 
     echo "Transfer complete";
