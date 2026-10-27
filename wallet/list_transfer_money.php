@@ -21,4 +21,5 @@
         </tr>
         <?php }?>
     </table>
+    <br><a href='show_wallet.php'>Back</a>
 </html>

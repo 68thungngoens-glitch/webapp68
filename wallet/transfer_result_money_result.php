@@ -38,8 +38,7 @@ function calculateTransferPoints(
         $hourMinute < '20:00';
 
     $rate = ($isWednesday || $isSpecialHour)
-        ? 0.02
-        : 0.01;
+        ? 0.02 : 0.01;
 
     return (int) floor($amount * $rate);
 }
@@ -86,11 +85,12 @@ try {
     $sql = "INSERT INTO tb_transactions
             (member_id, transaction_type, amount, fee, discount, total_amount, related_user_id, status)
             VALUES
-            ('$id_out', '$type', '$money', '$fee','$point', '$total', '$id_in', '$status')";
+            ('$id_out', '$type', '$money', '$fee','0', '$total', '$id_in', '$status')";
 
     if (!$link->query($sql)) {
-        throw new Exception("Insert sender transaction failed");
-    }
+        throw new Exception("Insert sender transaction_out failed");
+    } 
+    $transaction_id = mysqli_insert_id($link);
 
     $type = "transfer_in";
 
@@ -100,17 +100,39 @@ try {
             ('$id_in', '$type', '$money', '0','0', '$money', '$id_out', '$status')";
 
     if (!$link->query($sql)) {
-        throw new Exception("Insert receiver transaction failed");
+        throw new Exception("Insert receiver transaction_in failed");
     }
 
+    
+    $sql = "INSERT INTO tb_point_lots
+        (member_id, points, remaining_points, earned_at, expired_at)
+        VALUES 
+        ('$id_out', '$point', '$point',NOW(), DATE_ADD(NOW(), INTERVAL 3 DAY))";
 
+    if (!$link->query($sql)) {
+        throw new Exception("Insert receiver points failed");
+    }
+
+    $sql = "INSERT INTO tb_point_transactions
+            (member_id, point_type, points, remaining_points,transaction_id, earned_at, expired_at)
+        VALUES ('$id_out', 'earn','$point','$point','$transaction_id', NOW(),DATE_ADD(NOW(), INTERVAL 3 DAY))";
+
+    if (!$link->query($sql)) {
+        throw new Exception("Insert receiver points_transaction failed");
+    }
+    $sql = "UPDATE tb_wallet 
+            SET point_balance = point_balance + '$point'
+            WHERE member_id = '$id_out';";
+    if (!$link->query($sql)) {
+        throw new Exception("Insert receiver points update failed");
+    }
 
     $link->commit();
 
     echo "Transfer complete";
     echo "<br>Save transaction complete";
 
-   // header("refresh:2;url='show_wallet.php'");
+   header("refresh:2;url='show_wallet.php'");
 
 } catch (Exception $e) {
 
@@ -120,6 +142,6 @@ try {
     echo "Transfer fail";
     echo "<br>Error : " . $e->getMessage();
 
-   // header("refresh:1;url='show_wallet.php'");
+   header("refresh:1;url='show_wallet.php'");
 }
 ?>

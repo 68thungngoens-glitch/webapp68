@@ -5,6 +5,15 @@ include 'connectdb.php';
 $type = "deposit";
 
 $money = $_POST['money'];
+$chaeck = $_POST['ues'] ?? 0;
+$point = $_POST['point'];
+$pf = 0 ;
+$re = 0 ;
+
+if($chaeck > 0 && $point >= 1000){
+    $pf = floor($point/1000);
+    $re = $point % 1000;
+}
 
 function fee_money($m){
     $f = 0;
@@ -37,6 +46,8 @@ function fee_money($m){
 
 [$total, $fee, $money_in] = fee_money($money);
 
+$fee = $fee - $pf ; 
+
 echo "Deposit : ".$money." $";
 echo "<br>Fee : ".$fee." $";
 echo "<br>Total amount to pay : ".$total." $";
@@ -68,9 +79,9 @@ try{
     $status = "success";
 
     $sql = "INSERT INTO tb_transactions
-            (member_id, transaction_type, amount, fee, total_amount, related_user_id, status)
+            (member_id, transaction_type, amount, fee,discount, total_amount, related_user_id, status)
             VALUES
-            ('$id', '$type', '$money', '$fee', '$money_in', '$id', '$status')";
+            ('$id', '$type', '$money', '$fee','$pf','$money_in', '$id', '$status')";
 
     if(!$link->query($sql)){
         throw new Exception("Insert transaction failed");
@@ -80,7 +91,7 @@ try{
 
     echo "Deposit complete";
     echo "<br>Save transaction complete";
-    header("refresh:2;url='show_wallet.php'");
+  //  header("refresh:5;url='show_wallet.php'");
 
 
 }catch(Exception $e){
@@ -89,7 +100,7 @@ try{
 
     echo "Deposit fail";
     echo "<br>Error : ".$e->getMessage();
-    header("refresh:1;url='show_wallet.php'");
+   // header("refresh:1;url='show_wallet.php'");
 }
 
 ?>

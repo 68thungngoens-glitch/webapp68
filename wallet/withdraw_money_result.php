@@ -30,9 +30,9 @@ try{
     $status = "success";
 
     $sql = "INSERT INTO tb_transactions
-            (member_id, transaction_type, amount, fee, total_amount, related_user_id, status)
+            (member_id, transaction_type, amount, fee,discount, total_amount, related_user_id, status)
             VALUES
-            ('$id', '$type', '$money', '$fee', '$money', '$id', '$status')";
+            ('$id', '$type', '$money', '$fee','0', '$money', '$id', '$status')";
 
     if(!$link->query($sql)){
         throw new Exception("Insert transaction failed");

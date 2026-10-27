@@ -5,7 +5,8 @@ include 'connectdb.php';
 $id = $_SESSION['id'];
 
 $sql = "SELECT w.money,
-        w.member_id,
+        w.wallet_id,
+        w.point_balance,
         t.transaction_id,
         t.transaction_type,
         t.amount,
@@ -23,9 +24,13 @@ $result = mysqli_query($link, $sql);
 
 $transactions = [];
 $money = 0;
+$wallet_id = 0;
+
 
 while ($arr = mysqli_fetch_assoc($result)) {
     $money = $arr['money'];
+    $wallet_id = $arr['wallet_id'];
+    $point = $arr['point_balance'];
     $transactions[] = $arr;
 }
 ?>
@@ -37,11 +42,11 @@ while ($arr = mysqli_fetch_assoc($result)) {
         <br>
         Money : <?php echo $money; ?>.$
         <br>
-        Point : 
+        Point : <?php echo $point; ?>.POINTS
         <br>
-         <br><a href="deposit_money.php">Deposit Money :</a>
+         <br><a href="deposit_money.php?point=<?php echo $point ;?>">Deposit Money :</a>
         <br><a href="withdraw_money.php">Withdraw Money :</a>
-        <br><a href="list_transfer_money.php">Transfer Money :</a>
+        <br><a href="list_transfer_money.php?id=<?php echo $wallet_id;?>">Transfer Money :</a>
 <br>
         List :
         <br>
