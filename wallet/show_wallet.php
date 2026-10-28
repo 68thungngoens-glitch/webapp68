@@ -86,6 +86,8 @@ while ($arr = mysqli_fetch_assoc($result)) {
     $sql = "SELECT remaining_points FROM tb_point_lots
             WHERE expired_at <= NOW()";
     if(mysqli_fetch_array(mysqli_query($link,$sql))>0){
+
+    echo "<br>***You have point expirend deleteing point***";
         $point = $arr['remaining_points'];
     
     $sql = "INSERT INTO tb_point_transactions
@@ -95,11 +97,13 @@ while ($arr = mysqli_fetch_assoc($result)) {
 
 
     $sql = "UPDATE tb_wallet
-            SET point_balance = point_balance - point";
+            SET point_balance = point_balance - point
+            WHERE member_id = $id";
     mysqli_query($link,$sql);
 
 
-    $sql = "DELETE FROM tb_point_lots
+    $sql = "UPDATE tb_point_lots
+        SET remaining_points = 0
         WHERE  expired_at <= NOW() ; " ;
     mysqli_query($link,$sql);
     }
