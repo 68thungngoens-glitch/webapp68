@@ -4,7 +4,8 @@
         echo "you not login.";
         header('refresh:1;url=Login.php');
         exit();
-    }else{   
+    }else{
+    echo $_SESSION['name']."Edit<br>";    
     include 'connectdb_Flim.php';
 
     $id = $_POST['id'];
@@ -26,16 +27,22 @@
             WHERE movie_id = '$id';";
 
     mysqli_query($link,$sql);
+
     $sql = "DELETE FROM tb_movies_type WHERE movies_id = '$id'";
-    
+
     mysqli_query($link,$sql);
+
     foreach($type as $type_id){
         $sql = "INSERT INTO tb_movies_type(movies_id,type_id)
                 VALUES ('$id','$type_id')";
         
         mysqli_query($link,$sql);
     }
+
     echo "Edit Success";
     header('refresh:1;url=movies.php');
     }
+    
+
+
 ?>
