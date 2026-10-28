@@ -17,6 +17,9 @@ $money = (float) $_POST['money'];
 $fee = $money * 0.01;
 $total = $money + $fee;
 
+echo "You fee : ".$fee.".$<br>";
+echo "You total : ".$total.".$<br>";
+
 $time = new DateTimeImmutable('now',new DateTimeZone('Asia/Bangkok'));
 
 function calculateTransferPoints(
@@ -44,6 +47,8 @@ function calculateTransferPoints(
 }
 
 $point = calculateTransferPoints($money, $time);
+
+echo "You have point : ".$point."<br>";
 
 $link->begin_transaction();
 
@@ -103,6 +108,7 @@ try {
         throw new Exception("Insert receiver transaction_in failed");
     }
 
+    if($point > 0 ){
     
     $sql = "INSERT INTO tb_point_lots
         (member_id, points, remaining_points, earned_at, expired_at)
@@ -125,14 +131,8 @@ try {
             WHERE member_id = '$id_out';";
     if (!$link->query($sql)) {
         throw new Exception("Insert receiver points update failed");
-    }
-
-    $sql = "UPDATE tb_point_lots
-            SET remaining_points = remaining_points + '$point'
-            WHERE member_id = '$id_out';";
-    if (!$link->query($sql)) {
-        throw new Exception("Insert receiver points_lots update failed");
-    }
+        }
+}
 
     $link->commit();
 

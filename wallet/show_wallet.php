@@ -80,3 +80,32 @@ while ($arr = mysqli_fetch_assoc($result)) {
         <br><a href="logout.php">Log Out :</a>
   
 </html>
+<?php
+    
+    
+    $sql = "SELECT remaining_points FROM tb_point_lots
+            WHERE expired_at <= NOW()";
+    if(mysqli_fetch_array(mysqli_query($link,$sql))>0){
+        $point = $arr['remaining_points'];
+    
+    $sql = "INSERT INTO tb_point_transactions
+            (member_id, point_type, points, remaining_points,transaction_id, earned_at, expired_at)
+        VALUES ('$id', 'expire','$point','$point','$transaction_id', '' ,NOW()";
+    mysqli_query($link,$sql);
+
+
+    $sql = "UPDATE tb_wallet
+            SET point_balance = point_balance - point";
+    mysqli_query($link,$sql);
+
+
+    $sql = "DELETE FROM tb_point_lots
+        WHERE  expired_at <= NOW() ; " ;
+    mysqli_query($link,$sql);
+    }
+    
+    
+
+
+    
+?>
